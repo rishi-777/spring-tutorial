@@ -20,7 +20,7 @@ public class FirstApplication {
 //		actually giving us the object of ApplicationContext so we can store its reference
 //		 and using that object reference we can call getBean method.
 		Alien obj=context.getBean(Alien.class);
-		obj.print();
+		obj.code();
 	}
 
 }
