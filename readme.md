@@ -24,7 +24,10 @@ Prototype -> Every-time when getBean function is encountered a new copy of objec
 
 => NOTE: In singleton, whether you ask for the object or not spring container will create one object for you, but in case of prototype if you ask for the object then only the object of that class will be created by spring container.
 
-
+4. Bean is the object of the class created by spring at runtime.
+If our class is a bean then every variable present inside it will be known as property of that bean.
+We can assign default values to those properties by using Bean Configuration file also(instead of using constructor...so spring will take care of assigning the default values to the properties of your class's object)
+But if we are using Bean Configuration file to assign value to our object, then it is mandatory that our class has a setter method present for that specific property or else it wont work.
 
  
         
