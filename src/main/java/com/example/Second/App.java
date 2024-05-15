@@ -14,11 +14,11 @@ public class App
     		
     	ApplicationContext factory=new ClassPathXmlApplicationContext("spring.xml");
     	
-        Alien obj1=(Alien)factory.getBean("alien");
-        obj1.age=15;
-        System.out.println("Age "+obj1.age);
-        
-        Alien obj2=(Alien)factory.getBean("alien");
-        System.out.println("Age "+obj2.age);
+//        Alien obj1=(Alien)factory.getBean("alien");
+//        obj1.age=15;
+//        System.out.println("Age "+obj1.age);
+//        
+//        Alien obj2=(Alien)factory.getBean("alien");
+//        System.out.println("Age "+obj2.age);
     }
 }

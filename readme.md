@@ -22,6 +22,10 @@ inside it we are passing a Bean Configuration file(spring.xml), which contains t
 So for this inside the Bean Configuration file(spring.xml) we can specify the scope attribute of every bean, by default it is set to singleton, if we don't want spring container to create only one object use that same copy, we can change this attribute to prototype.
 Prototype -> Every-time when getBean function is encountered a new copy of object will be created. 
 
+=> NOTE: In singleton, whether you ask for the object or not spring container will create one object for you, but in case of prototype if you ask for the object then only the object of that class will be created by spring container.
+
+
+
  
         
 
