@@ -5,11 +5,11 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
 
-	<bean id="alien" class="com.example.Second.Alien">
+	<bean id="alien" class="com.example.Second.Alien" autowire="byName">
 		<property name="age" value="12"></property>
-		<property name="comp" ref="laptop"></property> 
+		<!--<property name="comp" ref="laptop"></property> -->
 	</bean>
 	
-	<bean id="laptop" class="com.example.Second.Laptop">
+	<bean id="comp" class="com.example.Second.Laptop">
 	</bean>
 </beans>
