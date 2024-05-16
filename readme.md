@@ -66,8 +66,8 @@ And for the property that is optional you can go for setter injection. Don't use
 When we have a bean/class that is dependent on some other class/bean and we have the same name of class property on which our current class is dependent on with the bean name of that dependent class, then there is no need of explicitly assigning the property of our current class to that bean we can use autowire in that bean.
 
 Autowire can go byName or byType.
-When we say byName it will match the class property/variable with the name of the bean(its id)
+When we say byName it will match the name of the bean(its id) with the class property/variable.
 
-
+When you say byType it will try to match the type of any bean with the property type of the variable that is autowired.
 
      
