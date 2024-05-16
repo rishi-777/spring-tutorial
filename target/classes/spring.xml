@@ -7,12 +7,12 @@
 
 	<bean id="alien" class="com.example.Second.Alien" autowire="byType">
 		<property name="age" value="12"></property>
-		<!--<property name="comp" ref="laptop"></property> -->
+		
 	</bean>
 	
 	<bean id="comp" class="com.example.Second.Laptop">
 	</bean>
 	
-	<bean id="desktop" class="com.example.Second.Desktop">
+	<bean id="desktop" class="com.example.Second.Desktop" primary="true">
 	</bean>
 </beans>

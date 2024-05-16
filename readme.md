@@ -75,3 +75,39 @@ In case we have two beans of same type and we have put autowiring byType on some
 it will ambiguous for spring to assign which been to the property of our autowiring bean.
 
 How to solve this?
+a) One way to solve this we define the property, then spring will ignore autowiring
+instead of using like this
+
+	<bean id="alien" class="com.example.Second.Alien" autowire="byType">
+		<property name="age" value="12"></property>
+	</bean>
+	
+	<bean id="comp" class="com.example.Second.Laptop">
+	</bean>
+	
+	<bean id="desktop" class="com.example.Second.Desktop">
+	</bean>
+Go this way
+
+	<bean id="alien" class="com.example.Second.Alien" autowire="byType">
+		<property name="age" value="12"></property>
+		<property name="comp" ref="comp"></property> 
+	</bean>
+	
+	<bean id="comp" class="com.example.Second.Laptop">
+	</bean>
+	
+	<bean id="desktop" class="com.example.Second.Desktop">
+	</bean>
+b) What if you want to use autowiring only... then in that case we need to give preference to one of the bean/object .. so in that case we will use primary="true" attribute for that bean that neds to be preferred in case we have multiple beans of same type.
+
+
+
+
+
+
+
+
+
+	
+	
