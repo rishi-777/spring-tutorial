@@ -4,8 +4,14 @@ public class Alien {
 	private int age;
 	private Laptop lap;
 	
-	public Alien(){
-		System.out.println("Alien object created....");
+//	public Alien(){
+//		System.out.println("Alien object created....");
+//	}
+	
+	public Alien(int age) {
+		super();
+		this.age=age;
+		System.out.println("Alien object created....using parameterized constructor");
 	}
 	
 	public int getAge() {

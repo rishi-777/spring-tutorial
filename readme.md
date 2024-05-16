@@ -24,12 +24,14 @@ Prototype -> Every-time when getBean function is encountered a new copy of objec
 
 => NOTE: In singleton, whether you ask for the object or not spring container will create one object for you, but in case of prototype if you ask for the object then only the object of that class will be created by spring container.
 
-4. Bean is the object of the class created by spring at runtime.
+4. Value Attribute
+Bean is the object of the class created by spring at runtime.
 If our class is a bean then every variable present inside it will be known as property of that bean.
 We can assign default values to those properties by using Bean Configuration file also(instead of using constructor...so spring will take care of assigning the default values to the properties of your class's object)
 But if we are using Bean Configuration file to assign value to our object, then it is mandatory that our class has a setter method present for that specific property or else it wont work.
 
- 5. Previously we are assigning value to a primitive property of object(bean) using attribute value of property.
+ 5. Ref Attribute
+Previously we are assigning value to a primitive property of object(bean) using attribute value of property.
  		```<bean id="alien" class="com.example.Second.Alien">
 			<property name="age" value="10"></property>
 		</bean>```
@@ -42,7 +44,21 @@ We need to use the ref attribute and assign its value equal to the id of that be
 	<bean id="laptop" class="com.example.Second.Laptop">
 	</bean>
 ```
-        
 
+6. Constructor Injection
+If we use constructor-arg (means parameterized constructor) then it becomes constructor injection.
+<bean id="alien" class="com.example.Second.Alien">
+	<constructor-arg value="12"></constructor-arg>
+</bean> 
+
+7. Setter Injection
+When we use property tag then it becomes setter injection for that bean
+<bean id="alien" class="com.example.Second.Alien">
+	<property name="age" value="12"></property> 
+</bean>
+
+When to use which? -> 
+Whenever in a class you have a property that is compulsory to be assigned then for that property we need to constructor injection.
+And for the property that is optional you can go for setter injection. Don't use constructor when variable/property assignment is optional.
 
      
