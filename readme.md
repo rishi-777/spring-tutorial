@@ -29,7 +29,19 @@ If our class is a bean then every variable present inside it will be known as pr
 We can assign default values to those properties by using Bean Configuration file also(instead of using constructor...so spring will take care of assigning the default values to the properties of your class's object)
 But if we are using Bean Configuration file to assign value to our object, then it is mandatory that our class has a setter method present for that specific property or else it wont work.
 
- 
+ 5. Previously we are assigning value to a primitive property of object(bean) using attribute value of property.
+ 		```<bean id="alien" class="com.example.Second.Alien">
+			<property name="age" value="10"></property>
+		</bean>```
+What if we have a reference type then how will we assign ?
+We need to use the ref attribute and assign its value equal to the id of that bean/object which it will be referring to. 
+```<bean id="alien" class="com.example.Second.Alien">
+		<property name="age" value="10"></property>
+		<property name="lap" ref="laptop"></property> 
+	</bean>
+	<bean id="laptop" class="com.example.Second.Laptop">
+	</bean>
+```
         
 
 
