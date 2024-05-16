@@ -6,8 +6,8 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
 
 	<bean id="alien" class="com.example.Second.Alien">
-		<constructor-arg value="12"></constructor-arg>
-		<property name="lap" ref="laptop"></property> 
+		<property name="age" value="12"></property>
+		<property name="comp" ref="laptop"></property> 
 	</bean>
 	
 	<bean id="laptop" class="com.example.Second.Laptop">

@@ -61,4 +61,11 @@ When to use which? ->
 Whenever in a class you have a property that is compulsory to be assigned then for that property we need to constructor injection.
 And for the property that is optional you can go for setter injection. Don't use constructor when variable/property assignment is optional.
 
+8. Autowire
+
+Autowire can go byName or byType.
+When we say byName it will match the class property/variable with the name of the bean(its id)
+
+
+
      

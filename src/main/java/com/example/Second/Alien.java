@@ -2,18 +2,13 @@ package com.example.Second;
 
 public class Alien {
 	private int age;
-	private Laptop lap;
+	private Computer comp;
 	
-//	public Alien(){
-//		System.out.println("Alien object created....");
-//	}
-	
-	public Alien(int age) {
-		super();
-		this.age=age;
-		System.out.println("Alien object created....using parameterized constructor");
+	public Alien(){
+		System.out.println("Alien object created....");
 	}
 	
+
 	public int getAge() {
 		return age;
 	}
@@ -23,17 +18,20 @@ public class Alien {
 		this.age = age;
 	}
 
-	public Laptop getLap() {
-		return lap;
+
+	public Computer getComp() {
+		return comp;
 	}
 
-	public void setLap(Laptop lap) {
-		this.lap = lap;
+
+	public void setComp(Computer comp) {
+		this.comp = comp;
 	}
+
 
 	public void code() {
 		System.out.println("I am coding...");
-		lap.compile();
+		comp.compile();
 	}
 
 }
