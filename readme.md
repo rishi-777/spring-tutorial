@@ -70,4 +70,8 @@ When we say byName it will match the name of the bean(its id) with the class pro
 
 When you say byType it will try to match the type of any bean with the property type of the variable that is autowired.
 
-     
+Note-> Ambiguity in case of autowiring byType 
+In case we have two beans of same type and we have put autowiring byType on some bean that is dependent on this type of object/bean then in that case spring will throw error because 
+it will ambiguous for spring to assign which been to the property of our autowiring bean.
+
+How to solve this?

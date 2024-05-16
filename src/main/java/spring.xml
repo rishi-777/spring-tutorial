@@ -10,8 +10,8 @@
 		<!--<property name="comp" ref="laptop"></property> -->
 	</bean>
 	
-	<!--<bean id="comp" class="com.example.Second.Laptop">
-	</bean>-->
+	<bean id="comp" class="com.example.Second.Laptop">
+	</bean>
 	
 	<bean id="desktop" class="com.example.Second.Desktop">
 	</bean>
