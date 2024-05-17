@@ -19,9 +19,8 @@ public class DemoApplication {
 		alien1.setTech("Nextjs");
 
 		AlienRepo repo=context.getBean(AlienRepo.class);
-		repo.add(alien1);
+		repo.save(alien1);
 		System.out.println(repo.findAll());
-		
 	}
 
 }
