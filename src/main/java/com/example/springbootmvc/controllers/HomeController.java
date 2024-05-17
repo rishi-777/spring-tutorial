@@ -2,6 +2,12 @@ package com.example.springbootmvc.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 
 
 @Controller
@@ -24,4 +30,18 @@ public class HomeController {
     public String home(){
         return "index.jsp";
     }
+
+    @RequestMapping("/add")
+    public String add(HttpServletRequest req) {
+        int x=Integer.parseInt(req.getParameter("num1"));
+        int y=Integer.parseInt(req.getParameter("num2"));
+        int res=x+y;
+
+        HttpSession session=req.getSession();
+        session.setAttribute("res", res);
+        // Another way of passing this variable to result page is 
+        // return "result.jsp?res="+res;// use url rewriting to pass this
+        return "result.jsp";
+    }
+    
 }
