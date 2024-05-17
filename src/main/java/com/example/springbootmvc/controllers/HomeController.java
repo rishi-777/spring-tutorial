@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -51,11 +52,21 @@ public class HomeController {
     // }
 
     // These num1 and num2 values are getting extracted from Url(query params of URL)
-    @RequestMapping("/add")
-    public String add(@RequestParam("num1") int x, @RequestParam("num2") int y, HttpSession session) {
-        int res = x + y;
-        session.setAttribute("res", res);
-        return "result.jsp";
-    }
+    // @RequestMapping("/add")
+    // public String add(@RequestParam("num1") int x, @RequestParam("num2") int y, HttpSession session) {
+    //     int res = x + y;
+    //     session.setAttribute("res", res);
+    //     return "result.jsp";
+    // }
 
+    // Removing Http Session also using the concept of Model and View
+    @RequestMapping("/add")
+    public ModelAndView add(@RequestParam("num1") int x, @RequestParam("num2") int y) {
+        int res = x + y;
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("result.jsp");
+        mv.addObject("res", res);
+
+        return mv;
+    }
 }
