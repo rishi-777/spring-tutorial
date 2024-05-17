@@ -35,7 +35,7 @@ public class HomeController {
     // If we want it to get served we need to add dependency of TomcatJasper
     @RequestMapping("/")
     public String home() {
-        return "index.jsp";
+        return "index";
     }
 
     // @RequestMapping("/add")
@@ -60,11 +60,33 @@ public class HomeController {
     // }
 
     // Removing Http Session also using the concept of Model and View
+    // Using ModelView we can pass along two things a) any dynamic data and any view name
+    // @RequestMapping("/add")
+    // public ModelAndView add(@RequestParam("num1") int x, @RequestParam("num2") int y) {
+    //     int res = x + y;
+    //     ModelAndView mv = new ModelAndView();
+    //     mv.setViewName("result.jsp");
+    //     mv.addObject("res", res);
+
+    //     return mv;
+    // }
+
+    // Now what if we want to change our view technology in future, now we are using jsp in future 
+    // we want to use some other view technology may be freemarker or velocity so we want to avoid using extension
+    // Another problem is whatever view templates we are using are part of webapp folder which is public
+    // so anyone can access it.... if we open website/pageName it will open that page without even calling 
+    // the controller we dont want that
+    // Although we can make it private by placing the view templates in web-inf folder it will make them private
+    // But what if we want to make them but place in different folder
+    // So now sincw we are removing the extension and changing path of file in which our view is present
+    // We need to somehow tell DispatchServlet controller of spring framework that we are reffering to
+    // a particular file over here .... so for this we need to add configuration and we do add this configuration
+    // in application.properties (Spring boot application properties)
     @RequestMapping("/add")
     public ModelAndView add(@RequestParam("num1") int x, @RequestParam("num2") int y) {
         int res = x + y;
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("result.jsp");
+        mv.setViewName("result");
         mv.addObject("res", res);
 
         return mv;
