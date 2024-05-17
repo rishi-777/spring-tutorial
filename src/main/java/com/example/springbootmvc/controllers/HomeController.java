@@ -1,6 +1,8 @@
 package com.example.springbootmvc.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,44 +53,77 @@ public class HomeController {
     // return "result.jsp";
     // }
 
-    // These num1 and num2 values are getting extracted from Url(query params of URL)
+    // These num1 and num2 values are getting extracted from Url(query params of
+    // URL)
     // @RequestMapping("/add")
-    // public String add(@RequestParam("num1") int x, @RequestParam("num2") int y, HttpSession session) {
-    //     int res = x + y;
-    //     session.setAttribute("res", res);
-    //     return "result.jsp";
+    // public String add(@RequestParam("num1") int x, @RequestParam("num2") int y,
+    // HttpSession session) {
+    // int res = x + y;
+    // session.setAttribute("res", res);
+    // return "result.jsp";
     // }
 
     // Removing Http Session also using the concept of Model and View
-    // Using ModelView we can pass along two things a) any dynamic data and any view name
+    // Using ModelView we can pass along two things a) any dynamic data and any view
+    // name
     // @RequestMapping("/add")
-    // public ModelAndView add(@RequestParam("num1") int x, @RequestParam("num2") int y) {
-    //     int res = x + y;
-    //     ModelAndView mv = new ModelAndView();
-    //     mv.setViewName("result.jsp");
-    //     mv.addObject("res", res);
+    // public ModelAndView add(@RequestParam("num1") int x, @RequestParam("num2")
+    // int y) {
+    // int res = x + y;
+    // ModelAndView mv = new ModelAndView();
+    // mv.setViewName("result.jsp");
+    // mv.addObject("res", res);
 
-    //     return mv;
+    // return mv;
     // }
 
-    // Now what if we want to change our view technology in future, now we are using jsp in future 
-    // we want to use some other view technology may be freemarker or velocity so we want to avoid using extension
-    // Another problem is whatever view templates we are using are part of webapp folder which is public
-    // so anyone can access it.... if we open website/pageName it will open that page without even calling 
+    // Now what if we want to change our view technology in future, now we are using
+    // jsp in future
+    // we want to use some other view technology may be freemarker or velocity so we
+    // want to avoid using extension
+    // Another problem is whatever view templates we are using are part of webapp
+    // folder which is public
+    // so anyone can access it.... if we open website/pageName it will open that
+    // page without even calling
     // the controller we dont want that
-    // Although we can make it private by placing the view templates in web-inf folder it will make them private
+    // Although we can make it private by placing the view templates in web-inf
+    // folder it will make them private
     // But what if we want to make them but place in different folder
-    // So now sincw we are removing the extension and changing path of file in which our view is present
-    // We need to somehow tell DispatchServlet controller of spring framework that we are reffering to
-    // a particular file over here .... so for this we need to add configuration and we do add this configuration
+    // So now sincw we are removing the extension and changing path of file in which
+    // our view is present
+    // We need to somehow tell DispatchServlet controller of spring framework that
+    // we are reffering to
+    // a particular file over here .... so for this we need to add configuration and
+    // we do add this configuration
     // in application.properties (Spring boot application properties)
-    @RequestMapping("/add")
-    public ModelAndView add(@RequestParam("num1") int x, @RequestParam("num2") int y) {
-        int res = x + y;
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("result");
-        mv.addObject("res", res);
+    // @RequestMapping("/add")
+    // public ModelAndView add(@RequestParam("num1") int x, @RequestParam("num2")
+    // int y) {
+    // int res = x + y;
+    // ModelAndView mv = new ModelAndView("result");
+    // mv.addObject("res", res);
 
-        return mv;
+    // return mv;
+    // }
+
+    /**
+     * Can we use something else instead of using ModelView?
+     * a) Model
+     * b) ModelMap
+     */
+    // @RequestMapping("/add")
+    // public String add(@RequestParam("num1") int x, @RequestParam("num2") int
+    // y,Model m) {
+    // int res = x + y;
+    // m.addAttribute("res", res);
+    // return "result";
+    // }
+
+    @RequestMapping("/add")
+    public String add(@RequestParam("num1") int x, @RequestParam("num2") int y, ModelMap m) {
+        int res = x + y;
+        m.addAttribute("res", res);
+        return "result";
     }
+
 }
