@@ -3,10 +3,13 @@ package com.example.springbootmvc.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.example.springbootmvc.model.Alien;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -119,11 +122,92 @@ public class HomeController {
     // return "result";
     // }
 
-    @RequestMapping("/add")
-    public String add(@RequestParam("num1") int x, @RequestParam("num2") int y, ModelMap m) {
-        int res = x + y;
-        m.addAttribute("res", res);
+    // @RequestMapping("/add")
+    // public String add(@RequestParam("num1") int x, @RequestParam("num2") int y,
+    // ModelMap m) {
+    // int res = x + y;
+    // m.addAttribute("res", res);
+    // return "result";
+    // }
+
+    // Need Of ModelAttribute annotation
+    // @RequestMapping("/addAlien")
+    // public String addAlien(@RequestParam("id") int id,@RequestParam("name")
+    // String name,Model m) {
+    // Alien alien=new Alien();
+    // alien.setId(id);
+    // alien.setName(name);
+
+    // m.addAttribute("alien", alien);
+    // return "result";
+    // }
+
+    /**
+     * We are expeting individual value again and again as RequestParams, what if we
+     * dont want to do that?
+     * That we can do with help of ModelAttribute Annotation
+     * Note Keep in mind that properties of Alien Model/Class shoul be exactly same
+     * as the name of queryParams that is present in URL or it will result in giving
+     * null value
+     */
+    // @RequestMapping("/addAlien")
+    // public String addAlien(@ModelAttribute Alien alien, Model m) {
+    // m.addAttribute("alien", alien);
+    // return "result";
+    // }
+
+    // /**
+    // * The amazing thing about ModelAttribute is that we do not
+    // * specifically need to add alien object to model ...Model attribute
+    // * will automatically do that for us.. so we dont even need that Model object
+    // * NOTE: By default Model Attribute add the name of ourr object as
+    // * camelCase className, so in JSP file if we are using alien name then it wont
+    // * matter because internally it has assigned the value of our object to
+    // "alien" field.
+    // */
+    // @RequestMapping("/addAlien")
+    // public String addAlien(@ModelAttribute Alien a) {
+    // return "result";
+    // }
+
+    /**
+     * But in casse if we are using some different name like "a"
+     * in our JSTL(resutl.jsp) it wont work.
+     * So inorder to give custom name to the field with which our alien
+     * object will get assigned we need to follow this syntax for this
+     */
+    // @RequestMapping("/addAlien")
+    // public String addAlien(@ModelAttribute("a") Alien a) {
+    // return "result";
+    // }
+
+    /**
+     * If we dont use the ModelAttribute
+     * and use field name as "alien" in JSTL in result.jsp then also it will work
+     * but it is kind of ambiguous, so it is a good practice/convention to use
+     * ModelAttribute
+     */
+    @RequestMapping("/addAlien")
+    public String addAlien(Alien a) {
         return "result";
     }
 
+    /**
+     * Model Attribute at method level
+     * What if we want that every Controller should have a access
+     * one global field
+     * So, for this we need to attach this field to our Model or ModelAttribute
+     * We can do this with the help of
+     * So after DispatcherServlet redirects the request to this controller,
+     * Spring framework before calling any request mapping, it will call this method
+     * and
+     * attach "greeting" field to our Model. Now it doesn't whatever method you call
+     * whatever type of request everywhere in request mapping this field will be
+     * available
+     * inside model object
+     */
+    @ModelAttribute
+    public void modelData(Model m) {
+        m.addAttribute("greeting", "Welcome Back");
+    }
 }

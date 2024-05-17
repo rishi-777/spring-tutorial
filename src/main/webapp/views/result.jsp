@@ -9,6 +9,8 @@
 <body>
     Using isELIgnored because sometimes JSTL is ignored and we wont be able to access the variable name directly
     <br/>
-    Result is: ${res}
+    ${greeting} Aliens
+    <br/>
+    Result is: ${alien}
 </body>
 </html>
