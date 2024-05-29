@@ -99,8 +99,17 @@ Go this way
 	
 	<bean id="desktop" class="com.example.Second.Desktop">
 	</bean>
-b) What if you want to use autowiring only... then in that case we need to give preference to one of the bean/object .. so in that case we will use primary="true" attribute for that bean that neds to be preferred in case we have multiple beans of same type.
-
+b) What if you want to use autowiring only... then in that case we need to give preference to one of the bean/object .. so in that case we will use primary="true" attribute for that bean that needs to be preferred in case we have multiple beans of same type.
+	
+	<bean id="alien" class="com.example.Second.Alien" autowire="byType">
+		<property name="age" value="12"></property>
+	</bean>
+	
+	<bean id="comp" class="com.example.Second.Laptop">
+	</bean>
+	
+	<bean id="desktop" class="com.example.Second.Desktop" primary="true">
+	</bean>
 
 
 
